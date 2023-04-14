@@ -253,7 +253,7 @@ def run_training(
         trust_remote_code=True,
         use_cache=not args.no_gradient_checkpointing,
         load_in_8bit=True,
-        local_files_only=True,
+        cache_dir=args.cache_dir,
         device_map={"": Accelerator().process_index},
     )
     model = prepare_model_for_int8_training(model)
