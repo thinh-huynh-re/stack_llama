@@ -1,6 +1,6 @@
 # RLHF pipeline for the creation of StackLLaMa: a Stack exchange llama-7b model.
 
-> :warning: **Warning:** Failed to reproduce due to the error `ValueError: Please specify target_modules in peft_config`
+> :warning: **Warning:** Failed to reproduce due to the error [cuBLAS API failed with status 15 - Error](https://github.com/tloen/alpaca-lora/issues/174)
 
 There were three main steps to the training process:
 
