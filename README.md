@@ -1,5 +1,7 @@
 # RLHF pipeline for the creation of StackLLaMa: a Stack exchange llama-7b model.
 
+> :warning: **Warning:** Failed to reproduce due to the error `ValueError: Please specify target_modules in peft_config`
+
 There were three main steps to the training process:
 
 1. Supervised fine-tuning of the base llama-7b model to create llama-7b-se:
