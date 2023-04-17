@@ -26,6 +26,39 @@ Fine-Tune Llama-7b on SE paired dataset
 """
 
 
+class ArgumentParser(Tap):
+    model_path: Optional[str] = ""
+    cache_dir: Optional[str] = "cache"
+    dataset_name: Optional[str] = "lvwerra/stack-exchange-paired"
+    subset: Optional[str] = "data/finetune"
+    split: Optional[str] = "train"
+    size_valid_set: Optional[int] = 4000
+    streaming: Optional[bool] = False
+    shuffle_buffer: Optional[int] = 5000
+
+    seq_length: Optional[int] = 1024
+    max_steps: Optional[int] = 10000
+    batch_size: Optional[int] = 2
+    gradient_accumulation_steps: Optional[int] = 1
+    eos_token_id: Optional[int] = 49152
+
+    learning_rate: Optional[float] = 1e-4
+    lr_scheduler_type: Optional[str] = "cosine"
+    num_warmup_steps: Optional[int] = 100
+    weight_decay: Optional[float] = 0.05
+
+    local_rank: Optional[int] = 0
+    no_fp16: Optional[bool] = False
+    bf16: Optional[bool] = True
+    no_gradient_checkpointing: Optional[bool] = False
+    seed: Optional[int] = 0
+    num_workers: Optional[int] = None
+    output_dir: Optional[str] = "./checkpoints"
+    log_freq: Optional[int] = 1
+    eval_freq: Optional[int] = 1000
+    save_freq: Optional[int] = 1000
+
+
 def get_args():
     # parser = argparse.ArgumentParser()
     # parser.add_argument("--model_path", type=str, default="")
@@ -65,39 +98,6 @@ def get_args():
     # return parser.parse_args()
 
     return ArgumentParser().parse_args()
-
-
-class ArgumentParser(Tap):
-    model_path: Optional[str] = ""
-    cache_dir: Optional[str] = "cache"
-    dataset_name: Optional[str] = "lvwerra/stack-exchange-paired"
-    subset: Optional[str] = "data/finetune"
-    split: Optional[str] = "train"
-    size_valid_set: Optional[int] = 4000
-    streaming: Optional[bool] = False
-    shuffle_buffer: Optional[int] = 5000
-
-    seq_length: Optional[int] = 1024
-    max_steps: Optional[int] = 10000
-    batch_size: Optional[int] = 2
-    gradient_accumulation_steps: Optional[int] = 1
-    eos_token_id: Optional[int] = 49152
-
-    learning_rate: Optional[float] = 1e-4
-    lr_scheduler_type: Optional[str] = "cosine"
-    num_warmup_steps: Optional[int] = 100
-    weight_decay: Optional[float] = 0.05
-
-    local_rank: Optional[int] = 0
-    no_fp16: Optional[bool] = False
-    bf16: Optional[bool] = True
-    no_gradient_checkpointing: Optional[bool] = False
-    seed: Optional[int] = 0
-    num_workers: Optional[int] = None
-    output_dir: Optional[str] = "./checkpoints"
-    log_freq: Optional[int] = 1
-    eval_freq: Optional[int] = 1000
-    save_freq: Optional[int] = 1000
 
 
 def chars_token_ratio(dataset, tokenizer, nb_examples=400):
