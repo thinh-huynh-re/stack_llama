@@ -48,7 +48,7 @@ class ArgumentParser(Tap):
     weight_decay: Optional[float] = 0.05
 
     local_rank: Optional[int] = 0
-    no_fp16: Optional[bool] = False
+    no_fp16: Optional[bool] = True
     bf16: Optional[bool] = True
     no_gradient_checkpointing: Optional[bool] = False
     seed: Optional[int] = 0
@@ -60,10 +60,15 @@ class ArgumentParser(Tap):
 
 
 def get_args():
+    # import argparse
+
     # parser = argparse.ArgumentParser()
     # parser.add_argument("--model_path", type=str, default="")
     # parser.add_argument(
     #     "--dataset_name", type=str, default="lvwerra/stack-exchange-paired"
+    # )
+    # parser.add_argument(
+    #     "--cache_dir", type=str, default="cache"
     # )
     # parser.add_argument("--subset", type=str, default="data/finetune")
     # parser.add_argument("--split", type=str, default="train")
@@ -83,7 +88,7 @@ def get_args():
     # parser.add_argument("--weight_decay", type=float, default=0.05)
 
     # parser.add_argument("--local_rank", type=int, default=0)
-    # parser.add_argument("--no_fp16", action="store_false")
+    # parser.add_argument("--no_fp16", action="store_false", default=True)
     # parser.add_argument("--bf16", action="store_true", default=True)
     # parser.add_argument(
     #     "--no_gradient_checkpointing", action="store_false", default=False
@@ -95,7 +100,7 @@ def get_args():
     # parser.add_argument("--eval_freq", default=1000, type=int)
     # parser.add_argument("--save_freq", default=1000, type=int)
 
-    # return parser.parse_args()
+    # p = parser.parse_args()
 
     return ArgumentParser().parse_args()
 

@@ -1,4 +1,5 @@
-peft
+# peft
+git+https://github.com/huggingface/peft
 torch
 transformers
 datasets
@@ -7,3 +8,4 @@ protobuf==3.20.3
 typed-argument-parser
 accelerate
 bitsandbytes
+wandb
